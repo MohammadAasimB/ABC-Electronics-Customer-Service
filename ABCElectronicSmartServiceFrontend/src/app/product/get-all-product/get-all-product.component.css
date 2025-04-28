@@ -1,0 +1,184 @@
+/* Basic styling for the card */
+.cardA {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 12px;
+  /* max-width: 25%; */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  /* display: flex;
+  flex-direction: row; */
+  /* align-items: center;
+  justify-content: center; */
+  gap: 20px;
+}
+
+/* .view {
+  background-color: aqua;
+} */
+/* From Uiverse.io by adamgiebl */
+.cssbuttons-io-button {
+  background: #a370f0;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 0.9em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #714da6;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 0.7em;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #7b52b9;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+.cardA:hover,
+.card1:hover {
+  transform: scale(1.05);
+  border: 1px solid black;
+}
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Styling for individual fields inside the card */
+.cardA .id,
+.cardA .name,
+.cardA .age,
+.cardA .salery,
+.cardA .department {
+  /* display: flex; */
+  /* justify-content: space-between; */
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #343a40;
+}
+
+/* Labels styling */
+.cardA p {
+  font-weight: bold;
+  margin: 0;
+  color: #495057;
+}
+
+/* Values styling */
+.cardA span {
+  color: #6c757d;
+}
+
+/* Additional styling to make cards look consistent */
+.cardA .name span,
+.cardA .age span,
+.cardA .salery span,
+.cardA .department span {
+  font-weight: 500;
+}
+
+/* For Search */
+.card-body {
+  margin-top: 50px;
+  margin-left: 470px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  max-width: 300px;
+}
+
+.card-body input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.card1 {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin: 10px 0;
+  margin-left: 440px;
+  max-width: fit-content;
+  align-items: center;
+}
+
+.card1 div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  width: 350px;
+}
+
+.card1 p {
+  font-weight: bold;
+  margin: 0;
+}
+
+.card1 span {
+  font-size: 14px;
+  color: #555;
+}
+
+.card1 .id,
+.card1 .name,
+.card1 .age,
+.card1 .salery,
+.card1 .department {
+  padding: 5px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.card1 .department {
+  border-bottom: none;
+}

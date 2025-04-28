@@ -1,0 +1,30 @@
+<div class="main">
+  <div class="cardA" (click)="complaint(data.modelNumber)" *ngFor="let data of result">
+    <div class="sub-card">
+      <div class="id">
+        <p>modelNumber</p>
+        <span>{{ data.modelNumber }}</span>
+      </div>
+      <div class="name">
+        <p>productName</p>
+        <span>{{ data.productName }}</span>
+      </div>
+      <div class="age">
+        <p>productCategoryName</p>
+        <span>{{ data.productCategoryName }}</span>
+      </div>
+      <div class="salery">
+        <p>dateofPurchase</p>
+        <span>{{ data.dateofPurchase }}</span>
+      </div>
+      <div class="department">
+        <p>warrantyYears</p>
+        <span>{{ data.warrantyYears }}</span>
+      </div>
+      <div class="department">
+        <p>warrantyDate</p>
+        <span>{{ data.warrantyDate }}</span>
+      </div>
+    </div>
+  </div>
+</div>

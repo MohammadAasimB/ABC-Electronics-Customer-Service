@@ -1,0 +1,11 @@
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 50px;
+}
+
+.card1 {
+  border-color: black;
+  border-style: groove;
+  background-color: beige;
+}

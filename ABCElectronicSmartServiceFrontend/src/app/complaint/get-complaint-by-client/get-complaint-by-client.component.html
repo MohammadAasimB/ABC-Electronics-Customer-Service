@@ -1,0 +1,18 @@
+<div class="main">
+  <div class="cardA" *ngFor="let data of result">
+    <div (click)="ComplaintById(data.complaintId)" class="sub-card">
+      <div class="name">
+        <p>productModelNumber</p>
+        <span>{{ data?.productModelNumber }}</span>
+      </div>
+      <div class="age">
+        <p>complaintName</p>
+        <span>{{ data?.complaintName }}</span>
+      </div>
+      <div class="salery">
+        <p>status</p>
+        <span>{{ data?.status }}</span>
+      </div>
+    </div>
+  </div>
+</div>

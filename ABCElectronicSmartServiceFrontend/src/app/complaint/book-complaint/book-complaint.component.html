@@ -1,0 +1,136 @@
+<div class="container">
+  <h1 class="banner">Book a complaint</h1>
+  <form class="body" [formGroup]="complaintForm" (ngSubmit)="onSubmit()">
+    <!--Complaint Name -->
+    <div class="form-group name">
+      <label for="complaintName">Complaint Name</label>
+      <input
+        type="text"
+        formControlName="complaintName"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid':
+            complaintForm.get('complaintName')?.invalid &&
+            complaintForm.get('complaintName')?.touched
+        }"
+      />
+      <div
+        *ngIf="
+          complaintForm.get('complaintName')?.touched &&
+          complaintForm.get('complaintName')?.invalid
+        "
+        class="text-danger"
+      >
+        <small *ngIf="complaintForm.get('complaintName')?.errors?.['required']"
+          >complaint Name is required.</small
+        >
+        <small *ngIf="complaintForm.get('complaintName')?.errors?.['minlength']"
+          >Minimum 3 characters.</small
+        >
+        <small *ngIf="complaintForm.get('complaintName')?.errors?.['maxlength']"
+          >Maximum 50 characters.</small
+        >
+      </div>
+    </div>
+
+    <!-- productModelNumber -->
+    <div class="form-group age">
+      <label for="productModelNumber"> productModelNumber</label>
+      <input
+        type="text"
+        formControlName="productModelNumber"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid':
+            complaintForm.get('productModelNumber')?.invalid &&
+            complaintForm.get('productModelNumber')?.touched
+        }"
+      />
+      <div
+        *ngIf="
+          complaintForm.get('productModelNumber')?.touched &&
+          complaintForm.get('agproductModelNumbere')?.invalid
+        "
+        class="text-danger"
+      >
+        <small
+          *ngIf="complaintForm.get('productModelNumber')?.errors?.['required']"
+          >productModelNumber is required.</small
+        >
+      </div>
+    </div>
+
+    <!-- ClientId -->
+    <div class="form-group salary">
+      <label for="clientId">ClientId</label>
+      <input
+        type="text"
+        formControlName="clientId"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid':
+            complaintForm.get('clientId')?.invalid &&
+            complaintForm.get('clientId')?.touched
+        }"
+      />
+      <div
+        *ngIf="
+          complaintForm.get('clientId')?.touched &&
+          complaintForm.get('clientId')?.invalid
+        "
+        class="text-danger"
+      >
+        <small *ngIf="complaintForm.get('clientId')?.errors?.['required']"
+          >ClientId is required.</small
+        >
+      </div>
+    </div>
+
+    <!-- EngineerId -->
+    <div class="form-group salary">
+      <label for="engineerId">EngineerId</label>
+      <input
+        type="text"
+        formControlName="engineerId"
+        class="form-control"
+        [ngClass]="{
+          'is-invalid':
+            complaintForm.get('engineerId')?.invalid &&
+            complaintForm.get('engineerId')?.touched
+        }"
+      />
+      <div
+        *ngIf="
+          complaintForm.get('engineerId')?.touched &&
+          complaintForm.get('engineerId')?.invalid
+        "
+        class="text-danger"
+      >
+        <small *ngIf="complaintForm.get('engineerId')?.errors?.['required']"
+          >EngineerId is required.</small
+        >
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button
+      class="btn btn-primary mt-3"
+      type="submit"
+      [disabled]="complaintForm.invalid"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+
+<!-- Submission Result -->
+<!-- <div *ngIf="go">
+  <div>
+    <h1>Your form is Submitted</h1>
+    <h2>Submitted Data</h2>
+    <p><strong>Name:</strong> {{ submittedData.name }}</p>
+    <p><strong>Age:</strong> {{ submittedData.age }}</p>
+    <p><strong>Salary:</strong> {{ submittedData.salary }}</p>
+    <p><strong>Department:</strong> {{ submittedData.department }}</p>
+  </div>
+</div> -->
