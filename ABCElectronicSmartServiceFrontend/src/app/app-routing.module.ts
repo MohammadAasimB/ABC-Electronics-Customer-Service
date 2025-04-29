@@ -7,6 +7,7 @@ import { GetComplaintByClientComponent } from './complaint/get-complaint-by-clie
 import { GetComplaintByEngineerComponent } from './engineer/get-complaint-by-engineer/get-complaint-by-engineer.component';
 import { GetAllProductComponent } from './product/get-all-product/get-all-product.component';
 import { GetComplaintByComplaintIdComponent } from './complaint/get-complaint-by-complaint-id/get-complaint-by-complaint-id.component';
+import { GetComplaintAndGetClientComponent } from './engineer/get-complaint-and-get-client/get-complaint-and-get-client.component';
 
 const routes: Routes = [
   { path: '', component: GetAllProductComponent },
@@ -15,6 +16,10 @@ const routes: Routes = [
   {
     path: 'getComplaintById/:complaintId',
     component: GetComplaintByComplaintIdComponent,
+  },
+  {
+    path: 'getComplaintAndGetClient/:complaintId/:clientId',
+    component: GetComplaintAndGetClientComponent,
   },
   { path: 'getComplaintByClient', component: GetComplaintByClientComponent },
   {

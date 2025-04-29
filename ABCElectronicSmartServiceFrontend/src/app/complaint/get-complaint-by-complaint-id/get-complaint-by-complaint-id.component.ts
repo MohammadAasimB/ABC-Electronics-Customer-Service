@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/Api.service';
 
 @Component({
@@ -11,18 +11,30 @@ export class GetComplaintByComplaintIdComponent {
   complaintId!: number;
   data!: any;
 
-  constructor(private service: ApiService, private route: ActivatedRoute) {}
+  constructor(
+    private service: ApiService,
+    private route: ActivatedRoute
+  ) // private router: Router
+  {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.complaintId = +params.get('complaintId')!;
-      console.log(this.complaintId); // Ensure complaintId is set correctly
+      console.log(this.complaintId);
 
-      // Move the HTTP request inside the subscription
       this.service.getComplaintById(this.complaintId).subscribe((data: any) => {
         this.data = data;
         console.log(data);
       });
     });
+  }
+
+  Resolved() {
+    // this.service
+    //   .complaintResolved(this.data, this.complaintId)
+    //   .subscribe((data: any) => {
+    //     alert('Changed Status to Resolved');
+    //     this.router.navigate(['/getComplaintByClient']);
+    //   });
   }
 }

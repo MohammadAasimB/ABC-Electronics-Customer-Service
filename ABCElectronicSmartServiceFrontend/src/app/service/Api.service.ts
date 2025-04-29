@@ -4,6 +4,7 @@ import { Observable, tap } from 'rxjs';
 import { LoginService } from './login.service';
 import { Complaint } from '../model/complaint';
 import { Product } from '../model/product';
+import { Client } from '../model/client';
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,10 @@ export class ApiService {
   //   return this.http.get<string>(url);
   // }
 
+  getClientById(id: string): Observable<Client> {
+    return this.http.get<Client>('http://localhost:8080/api/clients/' + id);
+  }
+
   logIn(name: string, password: string, role: string): Observable<string> {
     const url = `${this.baseUrl}/${name}/${password}/${role}`;
     return this.http.get(url, { responseType: 'text' }).pipe(
@@ -30,9 +35,12 @@ export class ApiService {
     );
   }
 
-  addComplaint(complaint: Complaint): Observable<Complaint> {
-    return this.http.post<Complaint>(`${this.bookComplaintUrl}/add`, complaint);
+  addComplaint(complaint: Complaint): Observable<any> {
+    return this.http.post('http://localhost:8080/complaints/add', complaint);
   }
+  // addData(demo: DemoModel): Observable<any> {
+  //   return this.http.post('http://localhost:8081/addData', demo);
+  // }
 
   getComplaintByClient(id: String): Observable<Complaint[]> {
     return this.http.get<Complaint[]>(
@@ -46,8 +54,20 @@ export class ApiService {
     );
   }
 
+  getComplaintByEngineerAndSorted(id: String): Observable<Complaint[]> {
+    return this.http.get<Complaint[]>(
+      'http://localhost:8080/engineer/' + id + '/complaints/sorted-by-priority'
+    );
+  }
+
+  complaintResolved(complaint: Complaint, id: number): Observable<any> {
+    return this.http.put(
+      'http://localhost:8080/api/clients/complaint/status/' + id,
+      complaint
+    );
+  }
+
   getComplaintById(id: number): Observable<Complaint> {
-    console.log('this is service');
     return this.http.get<Complaint>('http://localhost:8080/complaints/' + id);
   }
 

@@ -11,7 +11,7 @@ import { ApiService } from 'src/app/service/Api.service';
 export class BookComplaintComponent {
   complaintForm: FormGroup;
   message: string = '';
-
+  clientId: string = 'client001';
   product: string = '';
 
   constructor(
@@ -32,8 +32,8 @@ export class BookComplaintComponent {
         { value: '', disabled: true },
         [Validators.required],
       ],
-      clientId: ['', [Validators.required]],
-      engineerId: ['', [Validators.required]],
+      clientId: [{ value: '', disabled: true }, [Validators.required]],
+      // engineerId: ['', [Validators.required]],
     });
   }
 
@@ -51,6 +51,7 @@ export class BookComplaintComponent {
     this.route.paramMap.subscribe((params) => {
       this.product = params.get('modelNumber')!;
       this.complaintForm.get('productModelNumber')?.setValue(this.product);
+      this.complaintForm.get('clientId')?.setValue(this.clientId);
     });
   }
 
