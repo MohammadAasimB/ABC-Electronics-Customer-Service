@@ -1,28 +1,54 @@
-<div>
-  <button (click)="Sorted()">Sort</button>
+<div class="head">
+  <button class="sort" (click)="Sorted()">Sort By Priority</button>
+  <form class="findByDate" (ngSubmit)="onSubmit()">
+    <label for="status">Status:</label>
+    <select id="status" [(ngModel)]="status" name="status" required>
+      <option value="Open">Open</option>
+      <option value="Resolved">Resolved</option>
+    </select>
+
+    <label for="resolvedDate">Resolved Date:</label>
+    <input
+      type="date"
+      id="resolvedDate"
+      [(ngModel)]="resolvedDate"
+      name="resolvedDate"
+      required
+    />
+
+    <button type="submit">Get Complaints</button>
+  </form>
 </div>
-<div class="main">
-  <div class="cardA" *ngFor="let data of result">
-    <div
-      (click)="ComplaintById(data.complaintId, data.clientId)"
-      class="sub-card"
-    >
-      <div class="id">
-        <p>complaintId</p>
-        <span>{{ data.complaintId }}</span>
+
+<div>
+  <div class="main">
+    <div class="cardA" *ngFor="let data of result">
+      <div *ngIf="data.message; else complaintCard" class="Nodata">
+        <p>{{ data.message }}</p>
       </div>
-      <div class="name">
-        <p>productModelNumber</p>
-        <span>{{ data.productModelNumber }}</span>
-      </div>
-      <div class="age">
-        <p>complaintName</p>
-        <span>{{ data.complaintName }}</span>
-      </div>
-      <div class="age">
-        <p>Priority</p>
-        <span>{{ data.priority }}</span>
-      </div>
+      <ng-template #complaintCard>
+        <div
+          (click)="ComplaintById(data.complaintId, data.clientId)"
+          class="sub-card"
+        >
+          <div class="id">
+            <p>complaintId</p>
+            <span>{{ data.complaintId }}</span>
+          </div>
+          <div class="name">
+            <p>productModelNumber</p>
+            <span>{{ data.productModelNumber }}</span>
+          </div>
+          <div class="age">
+            <p>complaintName</p>
+            <span>{{ data.complaintName }}</span>
+          </div>
+          <div class="age">
+            <p>Priority</p>
+            <span>{{ data.priority }}</span>
+          </div>
+        </div>
+      </ng-template>
     </div>
   </div>
 </div>

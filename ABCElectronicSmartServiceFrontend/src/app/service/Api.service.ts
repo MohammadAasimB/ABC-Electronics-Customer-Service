@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpParams,
+} from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { LoginService } from './login.service';
 import { Complaint } from '../model/complaint';
@@ -35,9 +39,24 @@ export class ApiService {
     );
   }
 
-  addComplaint(complaint: Complaint): Observable<any> {
-    return this.http.post('http://localhost:8080/complaints/add', complaint);
+  // addComplaint(complaint: Complaint): Observable<any> {
+  //   return this.http.post('http://localhost:8080/complaints/add', complaint);
+  // }
+
+  bookComplaint(
+    clientId: string,
+    productModelNumber: string,
+    complaint: any
+  ): Observable<any> {
+    const params = new HttpParams()
+      .set('clientId', clientId)
+      .set('productModelNumber', productModelNumber);
+
+    return this.http.post('http://localhost:8080/complaints/book', complaint, {
+      params,
+    });
   }
+
   // addData(demo: DemoModel): Observable<any> {
   //   return this.http.post('http://localhost:8081/addData', demo);
   // }
@@ -48,13 +67,13 @@ export class ApiService {
     );
   }
 
-  getComplaintByEngineer(id: String): Observable<Complaint[]> {
+  getComplaintByEngineer(id: number): Observable<Complaint[]> {
     return this.http.get<Complaint[]>(
       'http://localhost:8080/engineer/' + id + '/open-complaints'
     );
   }
 
-  getComplaintByEngineerAndSorted(id: String): Observable<Complaint[]> {
+  getComplaintByEngineerAndSorted(id: number): Observable<Complaint[]> {
     return this.http.get<Complaint[]>(
       'http://localhost:8080/engineer/' + id + '/complaints/sorted-by-priority'
     );
@@ -74,6 +93,23 @@ export class ApiService {
   getAllProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(
       'http://localhost:8080/api/products/allProducts'
+    );
+  }
+
+  getComplaintsByEngineerStatusAndResolvedDate(
+    engineerId: number,
+    status: string,
+    resolvedDate: string
+  ): Observable<Complaint[]> {
+    return this.http.get<Complaint[]>(
+      'http://localhost:8080/complaints/engineer/status/date',
+      {
+        params: {
+          engineerId: engineerId.toString(),
+          status: status,
+          resolvedDate: resolvedDate,
+        },
+      }
     );
   }
 

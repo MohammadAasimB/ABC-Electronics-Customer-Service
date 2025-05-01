@@ -1,3 +1,61 @@
+.head {
+  margin-top: 25px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.sort {
+  margin: 0px 50px;
+  padding: 10px 20px;
+  background-color: #89d68d; /* Green background */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Increase font size */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.sort:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
+.findByDate {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Add space between elements */
+  align-items: center; /* Center elements vertically */
+}
+
+.findByDate label {
+  margin-right: 5px; /* Space between label and input */
+  font-weight: bold; /* Make the labels bold */
+}
+
+.findByDate input,
+.findByDate select {
+  padding: 5px; /* Add padding inside the input fields */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 4px; /* Rounded corners */
+  font-size: 16px; /* Increase font size */
+}
+
+.findByDate button {
+  padding: 10px 20px; /* Add padding inside the button */
+  background-color: #89d68d; /* Green background */
+  color: white; /* White text */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Increase font size */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.findByDate button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
+
 /* Basic styling for the card */
 .cardA {
   background-color: #f8f9fa;
@@ -5,20 +63,11 @@
   border-radius: 8px;
   padding: 16px;
   margin: 12px;
-  /* max-width: 25%; */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
-  /* display: flex;
-  flex-direction: row; */
-  /* align-items: center;
-  justify-content: center; */
   gap: 20px;
 }
 
-/* .view {
-  background-color: aqua;
-} */
-/* From Uiverse.io by adamgiebl */
 .cssbuttons-io-button {
   background: #a370f0;
   color: white;
@@ -77,24 +126,25 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
 .cardA:hover,
 .card1:hover {
   transform: scale(1.05);
   border: 1px solid black;
 }
+
 .center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 /* Styling for individual fields inside the card */
 .cardA .id,
 .cardA .name,
 .cardA .age,
 .cardA .salery,
 .cardA .department {
-  /* display: flex; */
-  /* justify-content: space-between; */
   margin-bottom: 10px;
   font-size: 16px;
   color: #343a40;

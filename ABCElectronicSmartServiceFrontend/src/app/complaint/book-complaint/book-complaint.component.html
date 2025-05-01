@@ -1,7 +1,7 @@
 <div class="container">
   <h1 class="banner">Book a complaint</h1>
   <form class="body" [formGroup]="complaintForm" (ngSubmit)="onSubmit()">
-    <!--Complaint Name -->
+    <!-- Complaint Name -->
     <div class="form-group name">
       <label for="complaintName">Complaint Name</label>
       <input
@@ -22,7 +22,7 @@
         class="text-danger"
       >
         <small *ngIf="complaintForm.get('complaintName')?.errors?.['required']"
-          >complaint Name is required.</small
+          >Complaint Name is required.</small
         >
         <small *ngIf="complaintForm.get('complaintName')?.errors?.['minlength']"
           >Minimum 3 characters.</small
@@ -33,9 +33,9 @@
       </div>
     </div>
 
-    <!-- productModelNumber -->
+    <!-- Product Model Number -->
     <div class="form-group age">
-      <label for="productModelNumber"> productModelNumber</label>
+      <label for="productModelNumber">Product Model Number</label>
       <input
         type="text"
         formControlName="productModelNumber"
@@ -49,20 +49,20 @@
       <div
         *ngIf="
           complaintForm.get('productModelNumber')?.touched &&
-          complaintForm.get('agproductModelNumbere')?.invalid
+          complaintForm.get('productModelNumber')?.invalid
         "
         class="text-danger"
       >
         <small
           *ngIf="complaintForm.get('productModelNumber')?.errors?.['required']"
-          >productModelNumber is required.</small
+          >Product Model Number is required.</small
         >
       </div>
     </div>
 
-    <!-- ClientId -->
+    <!-- Client ID -->
     <div class="form-group salary">
-      <label for="clientId">ClientId</label>
+      <label for="clientId">Client ID</label>
       <input
         type="text"
         formControlName="clientId"
@@ -81,36 +81,36 @@
         class="text-danger"
       >
         <small *ngIf="complaintForm.get('clientId')?.errors?.['required']"
-          >ClientId is required.</small
+          >Client ID is required.</small
         >
       </div>
     </div>
 
-    <!-- EngineerId -->
-    <!-- <div class="form-group salary">
-      <label for="engineerId">EngineerId</label>
+    <!-- Resolved Date -->
+    <div class="form-group date">
+      <label for="resolvedDate">Resolved Date</label>
       <input
-        type="text"
-        formControlName="engineerId"
+        type="date"
+        formControlName="resolvedDate"
         class="form-control"
         [ngClass]="{
           'is-invalid':
-            complaintForm.get('engineerId')?.invalid &&
-            complaintForm.get('engineerId')?.touched
+            complaintForm.get('resolvedDate')?.invalid &&
+            complaintForm.get('resolvedDate')?.touched
         }"
       />
       <div
         *ngIf="
-          complaintForm.get('engineerId')?.touched &&
-          complaintForm.get('engineerId')?.invalid
+          complaintForm.get('resolvedDate')?.touched &&
+          complaintForm.get('resolvedDate')?.invalid
         "
         class="text-danger"
       >
-        <small *ngIf="complaintForm.get('engineerId')?.errors?.['required']"
-          >EngineerId is required.</small
+        <small *ngIf="complaintForm.get('resolvedDate')?.errors?.['required']"
+          >Resolved Date is required.</small
         >
       </div>
-    </div> -->
+    </div>
 
     <!-- Submit Button -->
     <button
@@ -122,15 +122,3 @@
     </button>
   </form>
 </div>
-
-<!-- Submission Result -->
-<!-- <div *ngIf="go">
-  <div>
-    <h1>Your form is Submitted</h1>
-    <h2>Submitted Data</h2>
-    <p><strong>Name:</strong> {{ submittedData.name }}</p>
-    <p><strong>Age:</strong> {{ submittedData.age }}</p>
-    <p><strong>Salary:</strong> {{ submittedData.salary }}</p>
-    <p><strong>Department:</strong> {{ submittedData.department }}</p>
-  </div>
-</div> -->
