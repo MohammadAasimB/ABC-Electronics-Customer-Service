@@ -1,4 +1,6 @@
-<!-- <nav class="navbar">
+<!-- CLIENT NAVBAR -->
+<nav class="navbar" *ngIf="hasRole('ROLE_CLIENT')">
+  <!-- <nav class="navbar" *ngIf="true"> -->
   <h3 class="banner logo">Client</h3>
   <ul class="nav-links">
     <li><a class="navlink" routerLink="">Home</a></li>
@@ -7,48 +9,43 @@
         >View My Complaints</a
       >
     </li>
+    <li *ngIf="isLoggedIn()">
+      <a class="navlink" (click)="logout()">Logout</a>
+    </li>
   </ul>
-</nav> -->
+</nav>
 
-<!-- engineer -->
-
-<nav class="navbar">
-  <h3 class="banner logo">engineer</h3>
+<!-- ENGINEER NAVBAR -->
+<nav class="navbar" *ngIf="hasRole('ROLE_ENGINEER')">
+  <h3 class="banner logo">Engineer</h3>
   <ul class="nav-links">
     <li><a class="navlink" routerLink="">Home</a></li>
     <li>
       <a class="navlink" routerLink="/getComplaintByEngineer">Complaints</a>
     </li>
-
-    <li *ngIf="!isLogin">
-      <a class="navlink" routerLink="/">Register</a>
+    <li *ngIf="isLoggedIn()">
+      <a class="navlink" (click)="logout()">Logout</a>
     </li>
   </ul>
 </nav>
 
-<!-- Admin -->
+<!-- before login -->
+<nav class="navbar" *ngIf="!isLoggedIn()">
+  <h3 class="banner logo">{{ isLoggedIn() }}</h3>
+  <ul class="nav-links">
+    <li><a class="navlink" routerLink="/signUp">Register</a></li>
+    <li><a class="navlink" routerLink="/logIn">LogIn</a></li>
+    <li *ngIf="isLoggedIn()">
+      <a class="navlink" (click)="logout()">Logout</a>
+    </li>
+  </ul>
+</nav>
 
 <!-- <nav class="navbar">
-  <h3 class="banner logo">Admin</h3>
+  <h3 class="banner logo">{{ isLoggedIn() }}</h3>
   <ul class="nav-links">
-    <li><a class="navlink" routerLink="">Home</a></li>
-    <li>
-      <a class="navlink" routerLink="/getComplaintByClient"
-        >View My Complaints</a
-      >
-    </li>
-    <li>
-      <a class="navlink" routerLink="/">View All Complaints</a>
-    </li>
-
-    <li>
-      <a class="navlink" routerLink="/getComplaintByEngineer"
-        >Complaints(engg)</a
-      >
-    </li>
-
-    <li *ngIf="!isLogin">
-      <a class="navlink" routerLink="/">Register</a>
+    <li *ngIf="isLoggedIn()">
+      <a class="navlink" (click)="logout()">Logout</a>
     </li>
   </ul>
 </nav> -->

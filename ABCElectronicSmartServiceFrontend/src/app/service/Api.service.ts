@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   HttpClient,
   HttpErrorResponse,
+  HttpHeaders,
   HttpParams,
 } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
@@ -20,6 +21,26 @@ export class ApiService {
 
   constructor(private http: HttpClient, private loginService: LoginService) {}
 
+  registerClient(clientData: any) {
+    return this.http.post(
+      'http://localhost:8080/api/clients/register',
+      clientData,
+      { responseType: 'text' as 'json' }
+    );
+  }
+
+  // Login API call
+  login(credentials: {
+    username: string;
+    password: string;
+  }): Observable<{ token: string }> {
+    // console.log('Decoded roles in login:', roles);
+    return this.http.post<{ token: string }>(
+      'http://localhost:8080/api/auth/login',
+      credentials
+    );
+  }
+
   // logIn(name: string, password: string, role: string): Observable<string> {
   //   const url = `${this.baseUrl}/${name}/${password}/${role}`;
   //   return this.http.get<string>(url);
@@ -29,15 +50,15 @@ export class ApiService {
     return this.http.get<Client>('http://localhost:8080/api/clients/' + id);
   }
 
-  logIn(name: string, password: string, role: string): Observable<string> {
-    const url = `${this.baseUrl}/${name}/${password}/${role}`;
-    return this.http.get(url, { responseType: 'text' }).pipe(
-      tap((response) => {
-        this.loginService.setSignin(true);
-        this.loginService.setUserId(response);
-      })
-    );
-  }
+  // logIn(name: string, password: string, role: string): Observable<string> {
+  //   const url = `${this.baseUrl}/${name}/${password}/${role}`;
+  //   return this.http.get(url, { responseType: 'text' }).pipe(
+  //     tap((response) => {
+  //       this.loginService.setSignin(true);
+  //       this.loginService.setUserId(response);
+  //     })
+  //   );
+  // }
 
   // addComplaint(complaint: Complaint): Observable<any> {
   //   return this.http.post('http://localhost:8080/complaints/add', complaint);
@@ -61,9 +82,21 @@ export class ApiService {
   //   return this.http.post('http://localhost:8081/addData', demo);
   // }
 
-  getComplaintByClient(id: String): Observable<Complaint[]> {
+  // getComplaintByClient(id: String): Observable<Complaint[]> {
+  //   return this.http.get<Complaint[]>(
+  //     'http://localhost:8080/complaints/all/' + id
+  //   );
+  // }
+
+  getComplaintByClient(id: string): Observable<Complaint[]> {
+    const token = localStorage.getItem('jwtToken');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
     return this.http.get<Complaint[]>(
-      'http://localhost:8080/complaints/all/' + id
+      'http://localhost:8080/complaints/all/' + id,
+      { headers }
     );
   }
 

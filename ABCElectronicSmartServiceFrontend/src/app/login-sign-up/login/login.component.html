@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="left-banner">
+    <h1>Welcome Back!</h1>
+    <p>Log in to access your dashboard and manage your data efficiently.</p>
+  </div>
+
+  <div class="right-form">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <h2>Client Login</h2>
+
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" formControlName="username" />
+        <div
+          class="error"
+          *ngIf="submitted && loginForm.get('username')?.invalid"
+        >
+          <small>Username is required.</small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" />
+        <div
+          class="error"
+          *ngIf="submitted && loginForm.get('password')?.invalid"
+        >
+          <small>Password is required.</small>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+
+      <div class="success" *ngIf="successMessage">{{ successMessage }}</div>
+      <div class="error" *ngIf="errorMessage">{{ errorMessage }}</div>
+    </form>
+  </div>
+</div>

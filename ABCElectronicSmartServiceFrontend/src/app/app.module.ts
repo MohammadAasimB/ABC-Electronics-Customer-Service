@@ -8,10 +8,10 @@ import { ClientModule } from './client/client.module';
 import { EngineerModule } from './engineer/engineer.module';
 import { AdminModule } from './admin/admin.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { LonInSignUpModule } from './lonin-signup/lon-in-sign-up.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ComplaintModule } from './complaint/complaint.module';
 import { ProductModule } from './product/product.module';
+import { LoginSignUpModule } from './login-sign-up/login-sign-up.module';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
@@ -22,11 +22,11 @@ import { ProductModule } from './product/product.module';
     EngineerModule,
     AdminModule,
     ReactiveFormsModule,
-    LonInSignUpModule,
     HttpClientModule,
     ComplaintModule,
     FormsModule,
     ProductModule,
+    LoginSignUpModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

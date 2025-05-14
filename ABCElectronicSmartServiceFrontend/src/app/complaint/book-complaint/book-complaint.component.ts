@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/service/Api.service';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-book-complaint',
@@ -18,7 +19,8 @@ export class BookComplaintComponent implements OnInit {
     private fb: FormBuilder,
     private apiService: ApiService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {
     this.complaintForm = this.fb.group({
       complaintName: [
@@ -42,7 +44,13 @@ export class BookComplaintComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.product = params.get('modelNumber')!;
       this.complaintForm.get('productModelNumber')?.setValue(this.product);
-      this.complaintForm.get('clientId')?.setValue(this.clientId);
+      // this.complaintForm.get('clientId')?.setValue(this.clientId);
+
+      const clientId = this.authService.getUsername();
+      if (clientId) {
+        this.clientId = clientId;
+        this.complaintForm.get('clientId')?.setValue(clientId);
+      }
     });
   }
 

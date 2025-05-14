@@ -24,8 +24,9 @@ a:hover {
   /* position: fixed; */
   top: 0;
   left: 0;
-  width: 100%;
-  background-color: aliceblue;
+  width: 95%;
+  /* background-color: aliceblue; */
+  background-color: rgb(51, 135, 210);
   display: flex;
   justify-content: space-between;
   padding: 15px 30px;
